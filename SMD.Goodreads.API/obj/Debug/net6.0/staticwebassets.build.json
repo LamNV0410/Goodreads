@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "orU+HpcWSX+mv7VH5zt3V5XpheM09IU7D6C131azJWU=",
+  "Source": "SMD.Goodreads.API",
+  "BasePath": "_content/SMD.Goodreads.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
