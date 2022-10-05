@@ -27,8 +27,4 @@
     <ProjectReference Include="..\SMD.Goodreads.API\SMD.Goodreads.API.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Systems\Services\" />
-  </ItemGroup>
-
 </Project>

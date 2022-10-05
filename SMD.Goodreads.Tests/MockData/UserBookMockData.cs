@@ -1,4 +1,4 @@
-﻿using SMD.Goodreads.API.Models;
+﻿using SMD.Goodreads.API.Models.Entities;
 using System.Net;
 
 namespace SMD.Goodreads.Tests.MockData
@@ -7,11 +7,8 @@ namespace SMD.Goodreads.Tests.MockData
     {
         public static List<Book> GetUserBooksCompletedReading(int userId)
         {
-            var books = BookData();
-            var result = books.Where(_ => _.UserBooks.Any(x => x.IsCompleted && x.UserId == userId)).ToList();
-            return result;
+            return BookData().Where(_ => _.UserBooks.Any(x => x.IsCompleted && x.UserId == userId)).ToList();
         }
-
         public static List<Book> BookData()
         {
             return new List<Book>()
@@ -56,6 +53,28 @@ She discovers one last cassette tape, which sheds light on Anka’s heroic activ
                    }
                 }
             };
+        }
+        public static UserBook GetUserBook()
+        {
+            return new UserBook()
+            {
+                BookId = 2,
+                IsCompleted = true,
+                UserId = 2
+            };
+        }
+        public static UserBook NewUserBook()
+        {
+            return new UserBook()
+            {
+                BookId = 2,
+                IsCompleted = true,
+                UserId = 3
+            };
+        }
+        public static UserBook GetEmptyUserBook()
+        {
+            return null;
         }
     }
 }

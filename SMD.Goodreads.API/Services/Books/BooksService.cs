@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SMD.Goodreads.API.Context;
-using SMD.Goodreads.API.Models;
+using SMD.Goodreads.API.Models.Entities;
 using SMD.Goodreads.API.Models.Requests;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +10,8 @@ namespace SMD.Goodreads.API.Services.Books
 {
     public class BooksService : IBooksService
     {
-        private readonly GoodreadsDbcontext _context;
-        public BooksService(GoodreadsDbcontext context)
+        private readonly GoodReadsDbcontext _context;
+        public BooksService(GoodReadsDbcontext context)
         {
             _context = context;
         }

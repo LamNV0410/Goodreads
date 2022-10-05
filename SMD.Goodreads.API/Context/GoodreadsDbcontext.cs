@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SMD.Goodreads.API.Models;
+using SMD.Goodreads.API.Models.Entities;
 
 namespace SMD.Goodreads.API.Context
 {
-    public class GoodreadsDbcontext : DbContext
+    public class GoodReadsDbcontext : DbContext
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<UserBook> UserBooks { get; set; }
         public DbSet<User> Users { get; set; }
-        public GoodreadsDbcontext(DbContextOptions options) : base(options)
+        public GoodReadsDbcontext(DbContextOptions options) : base(options)
         {
         }
 
@@ -22,7 +22,6 @@ namespace SMD.Goodreads.API.Context
                 .HasOne<Book>(sc => sc.Book)
                 .WithMany(s => s.UserBooks)
                 .HasForeignKey(sc => sc.BookId);
-
 
             modelBuilder.Entity<UserBook>()
                 .HasOne<User>(sc => sc.User)

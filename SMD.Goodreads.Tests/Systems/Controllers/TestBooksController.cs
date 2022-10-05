@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using SMD.Goodreads.API.Controllers;
+using SMD.Goodreads.API.Models.Entities;
 using SMD.Goodreads.API.Models.Requests;
 using SMD.Goodreads.API.Services.Books;
 using SMD.Goodreads.Tests.MockData;
@@ -11,19 +12,31 @@ namespace SMD.Goodreads.Tests.Systems.Controllers
     public class TestBooksController
     {
         [Fact]
-        public async Task SMD_TEST_GETBOOKBYNAME()
+        public async Task NO_CONTENT_GET_BOOK_BY_NAME()
         {
             var bookService = new Mock<IBooksService>();
-            BookModelRequest request = new BookModelRequest()
+            var request = new BookModelRequest()
+            {
+                Name = "No Content"
+            };
+            bookService.Setup(x => x.GetBooksAsync(request)).ReturnsAsync(BookMockData.GetEmptyBook<List<Book>>());
+            var controller = new BooksController(bookService.Object);
+            var result = await controller.GetBooks(request);
+            result.GetType().Should().Be(typeof(NoContentResult));
+        }
+
+        [Fact]
+        public async Task GET_BOOK_BY_NAME()
+        {
+            var bookService = new Mock<IBooksService>();
+            var request = new BookModelRequest()
             {
                 Name = "Coven"
             };
-
             bookService.Setup(x => x.GetBooksAsync(request)).ReturnsAsync(BookMockData.GetBooks());
-            var sut = new BooksController(bookService.Object);
-            var result = await sut.GetBooks(request);
+            var controller = new BooksController(bookService.Object);
+            var result = await controller.GetBooks(request);
             result.GetType().Should().Be(typeof(OkObjectResult));
-            (result as OkObjectResult).StatusCode.Should().Be(200);
         }
     }
 }

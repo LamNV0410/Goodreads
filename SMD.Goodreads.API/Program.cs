@@ -24,7 +24,7 @@ namespace SMD.Goodreads.API
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var bookContext = services.GetRequiredService<GoodreadsDbcontext>();
+                var bookContext = services.GetRequiredService<GoodReadsDbcontext>();
                 BooksContextSeed.SeedData(bookContext);
             }
         }

@@ -1524,19 +1524,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LamNguyen\\.nuget\\packages\\": {}
+    "C:\\Users\\lamnv\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\SMD.Goodreads\\SMD.Goodreads.API\\SMD.Goodreads.API.csproj",
+      "projectUniqueName": "D:\\1.SMD\\BE\\Goodreads\\SMD.Goodreads.API\\SMD.Goodreads.API.csproj",
       "projectName": "SMD.Goodreads.API",
-      "projectPath": "C:\\SMD.Goodreads\\SMD.Goodreads.API\\SMD.Goodreads.API.csproj",
-      "packagesPath": "C:\\Users\\LamNguyen\\.nuget\\packages\\",
-      "outputPath": "C:\\SMD.Goodreads\\SMD.Goodreads.API\\obj\\",
+      "projectPath": "D:\\1.SMD\\BE\\Goodreads\\SMD.Goodreads.API\\SMD.Goodreads.API.csproj",
+      "packagesPath": "C:\\Users\\lamnv\\.nuget\\packages\\",
+      "outputPath": "D:\\1.SMD\\BE\\Goodreads\\SMD.Goodreads.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LamNguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lamnv\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

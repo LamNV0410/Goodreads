@@ -5,7 +5,12 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMD.Goodreads.API", "SMD.Goodreads.API\SMD.Goodreads.API.csproj", "{465507DD-EECC-4829-81C2-4D6152F9640D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMD.Goodreads.Tests", "SMD.Goodreads.Tests\SMD.Goodreads.Tests.csproj", "{13F805C3-59FE-47F9-B6E5-F02973324DF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMD.Goodreads.Tests", "SMD.Goodreads.Tests\SMD.Goodreads.Tests.csproj", "{13F805C3-59FE-47F9-B6E5-F02973324DF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{2ECF0028-F900-4571-BDD3-E2AFA48D530E}"
+	ProjectSection(SolutionItems) = preProject
+		Requirement.txt = Requirement.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

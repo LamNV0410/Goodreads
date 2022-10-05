@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SMD.Goodreads.API.Models;
+using SMD.Goodreads.API.Models.Entities;
 using SMD.Goodreads.API.Models.Requests;
 using SMD.Goodreads.API.Services.Books;
 using SMD.Goodreads.API.Services.UserBooks;
@@ -11,9 +11,6 @@ namespace SMD.Goodreads.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    ///<summary>
-    /// User reading books controller
-    /// </summary>
     public class UserBooksController : ControllerBase
     {
         private readonly IBooksService _booksService;
@@ -33,7 +30,7 @@ namespace SMD.Goodreads.API.Controllers
         [HttpGet]
         public async Task<ActionResult> GetUserBooks([FromQuery]UserBooksModelRequest request)
         {
-            var user = _userService.LoadCurrentUser();
+            var user = _userService.CurrentUser;
             var userBooks = await _userBooksService.GetUserBooksAsync(user.Id, request);
 
             if(userBooks is null || !userBooks.Any())
@@ -57,7 +54,7 @@ namespace SMD.Goodreads.API.Controllers
             var existUserBook = await _userBooksService.GetByIdAsync(user.Id, bookId);
             if(existUserBook is not null)
             {
-                return Conflict();
+                return BadRequest($"Id is exist in UserBook entity");
             }
 
             var userBook = new UserBook()
@@ -66,7 +63,7 @@ namespace SMD.Goodreads.API.Controllers
                 BookId = bookId,
                 IsCompleted = false,
             };
-            await _userBooksService.AddBookRead(userBook);
+            await _userBooksService.Add(userBook);
             return CreatedAtAction(nameof(GetUserBookById), new { id = userBook.BookId }, userBook);
         }
 

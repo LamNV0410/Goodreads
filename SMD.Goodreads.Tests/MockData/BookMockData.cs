@@ -1,4 +1,4 @@
-﻿using SMD.Goodreads.API.Models;
+﻿using SMD.Goodreads.API.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,9 +68,9 @@ She discovers one last cassette tape, which sheds light on Anka’s heroic activ
             return GetBooks().FirstOrDefault(x => x.Id == id);
         }
     
-        public static Book GetEmptyBook()
+        public static T GetEmptyBook<T>()
         {
-            return null;
+            return default;
         }
     
     }

@@ -1,4 +1,4 @@
-﻿using SMD.Goodreads.API.Models;
+﻿using SMD.Goodreads.API.Models.Entities;
 using SMD.Goodreads.API.Models.Requests;
 using System.Collections.Generic;
 using System.Threading.Tasks;

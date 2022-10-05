@@ -1,4 +1,4 @@
-﻿using SMD.Goodreads.API.Models;
+﻿using SMD.Goodreads.API.Models.Entities;
 using System.Threading.Tasks;
 
 namespace SMD.Goodreads.API.Services.Users

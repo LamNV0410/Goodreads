@@ -1,11 +1,11 @@
-﻿using SMD.Goodreads.API.Models;
+﻿using SMD.Goodreads.API.Models.Entities;
 using System.Collections.Generic;
 
 namespace SMD.Goodreads.API.Context
 {
     public class BooksContextSeed
     {
-        public static void SeedData(GoodreadsDbcontext context)
+        public static void SeedData(GoodReadsDbcontext context)
         {
             var books = new List<Book>()
             {
