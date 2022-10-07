@@ -7,6 +7,3 @@ You’re building a backend service to support the GoodReads mobile app. Please bu
 We’re looking only for APIs, no Frontend is needed.
 Please make sure that the APIs are RESTful. 
 We are looking for clean, readable code with unit tests.
-
-05/10/2022 : Create API, Create testing
-06/10/2022 : Review and create missing testcase

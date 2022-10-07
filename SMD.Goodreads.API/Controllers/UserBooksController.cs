@@ -16,6 +16,7 @@ namespace SMD.Goodreads.API.Controllers
         private readonly IBooksService _booksService;
         private readonly IUserBooksService _userBooksService;
         private readonly IUserService _userService;
+
         public UserBooksController(
             IBooksService booksService,
             IUserBooksService userBooksService,

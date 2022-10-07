@@ -16,9 +16,17 @@ namespace SMD.Goodreads.API
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            SeedDatabase(host);
+            // SeedDatabase(host);
             host.Run();
         }
+        
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+
         private static void SeedDatabase(IHost host)
         {
             using (var scope = host.Services.CreateScope())
@@ -28,12 +36,5 @@ namespace SMD.Goodreads.API
                 BooksContextSeed.SeedData(bookContext);
             }
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
     }
 }

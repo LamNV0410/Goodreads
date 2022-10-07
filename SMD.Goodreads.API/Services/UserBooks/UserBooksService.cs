@@ -12,10 +12,12 @@ namespace SMD.Goodreads.API.Services.UserBooks
     public class UserBooksService : IUserBooksService
     {
         private readonly GoodReadsDbcontext _context;
+
         public UserBooksService(GoodReadsDbcontext context)
         {
             _context = context;
         }
+
         public async Task Add(UserBook entity)
         {
             _context.UserBooks.Add(entity);
@@ -25,19 +27,21 @@ namespace SMD.Goodreads.API.Services.UserBooks
         public async Task<UserBook> GetByIdAsync(int userId, int bookId)
         {
             return await _context.UserBooks
+                .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.UserId == userId && x.BookId == bookId);
         }
 
         public async Task<IEnumerable<Book>> GetUserBooksAsync(int userId, [FromQuery] UserBooksModelRequest request)
         {
             var userBooks = _context.Books.Include(x => x.UserBooks)
-                .Where(_ => _.UserBooks.Any(x =>x.UserId == userId)).AsNoTracking();
+                .Where(_ => _.UserBooks.Any(x =>x.UserId == userId));
 
             if (request != null && request.IsCompleted != null)
             {
                 userBooks = userBooks.Where(_ => _.UserBooks.Any(x => x.IsCompleted == request.IsCompleted));
             }
-            return await userBooks.ToListAsync();
+
+            return await userBooks.AsNoTracking().ToListAsync();
         }
 
     }

@@ -11,6 +11,7 @@ namespace SMD.Goodreads.API.Services.Books
     public class BooksService : IBooksService
     {
         private readonly GoodReadsDbcontext _context;
+
         public BooksService(GoodReadsDbcontext context)
         {
             _context = context;
@@ -19,17 +20,17 @@ namespace SMD.Goodreads.API.Services.Books
         public async Task<IEnumerable<Book>> GetBooksAsync(BookModelRequest request)
         {
             if (!string.IsNullOrWhiteSpace(request.Name)) return await GetByName(request.Name);
-            return await _context.Books.ToListAsync();
+            return await _context.Books.AsNoTracking().ToListAsync();
         }
 
         public async Task<Book> GetByIdAsync(int id)
         {
-            return await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Books.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         private async Task<IEnumerable<Book>> GetByName(string name)
         {
-            return await _context.Books.Where(x => x.Name.Contains(name)).ToListAsync();
+            return await _context.Books.Where(x => x.Name.Contains(name)).AsNoTracking().ToListAsync();
         }
     }
 }

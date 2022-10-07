@@ -1,9 +1,4 @@
 ﻿using SMD.Goodreads.API.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SMD.Goodreads.Tests.MockData
 {
@@ -54,6 +49,7 @@ She discovers one last cassette tape, which sheds light on Anka’s heroic activ
                 }
             };
         }
+        
         public static Book NewBook()
         {
             return new Book
@@ -63,6 +59,7 @@ She discovers one last cassette tape, which sheds light on Anka’s heroic activ
                 Description = " One Piece Description"
             };
         }
+
         public static Book GetById(int id)
         {
             return GetBooks().FirstOrDefault(x => x.Id == id);
@@ -72,6 +69,50 @@ She discovers one last cassette tape, which sheds light on Anka’s heroic activ
         {
             return default;
         }
-    
+
+        public static List<Book> GetBooksWithUncompletedReading()
+        {
+            return new List<Book>()
+            {
+                new Book()
+                {
+                   Id = 1000,
+                   Name="One Piece",
+                   Description= @"As a child, Monkey D. Luffy was inspired to become a pirate by listening to the tales of the buccaneer
+""Red-Haired"" Shanks. But Luffy's life changed when he accidentally ate the Gum-Gum 
+Devil Fruit and gained the power to stretch like rubber...
+at the cost of never being able to swim again! Years later, still vowing to become the king of the pirates, 
+Luffy sets out on his adventure...one guy alone in a rowboat, in search of the legendary ""One Piece,"" 
+said to be the greatest treasure in the world...",
+                   UserBooks = new List<UserBook>()
+                   {
+                       new UserBook()
+                       {
+                            BookId = 1000,
+                            IsCompleted = false,
+                            UserId = 3
+                       }
+                   }
+                },
+                new Book()
+                {
+                    Id = 2000,
+                   Name="Monster",
+                   Description= @"
+A man working a job far removed from his childhood dreams gets wrapped up in an unexpected situation…! 
+Becoming a monster, he aims once again to fulfill his lifelong dream…!",
+                   UserBooks = new List<UserBook>()
+                   {
+                       new UserBook()
+                       {
+                            BookId = 2000,
+                            IsCompleted = false,
+                            UserId = 3
+                       }
+                   }
+                }
+            };
+        }
+
     }
 }

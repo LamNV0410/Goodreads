@@ -12,7 +12,7 @@ namespace SMD.Goodreads.Tests.Systems.Controllers
     public class TestBooksController
     {
         [Fact]
-        public async Task NO_CONTENT_GET_BOOK_BY_NAME()
+        public async Task GetBooks_WithNameUnMatch_ShouldReturnNoContent()
         {
             var bookService = new Mock<IBooksService>();
             var request = new BookModelRequest()
@@ -26,7 +26,7 @@ namespace SMD.Goodreads.Tests.Systems.Controllers
         }
 
         [Fact]
-        public async Task GET_BOOK_BY_NAME()
+        public async Task GetBooks_WithNameMatch_ShouldReturnOkObjectResult()
         {
             var bookService = new Mock<IBooksService>();
             var request = new BookModelRequest()

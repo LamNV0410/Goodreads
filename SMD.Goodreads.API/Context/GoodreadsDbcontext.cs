@@ -6,8 +6,11 @@ namespace SMD.Goodreads.API.Context
     public class GoodReadsDbcontext : DbContext
     {
         public DbSet<Book> Books { get; set; }
+
         public DbSet<UserBook> UserBooks { get; set; }
+
         public DbSet<User> Users { get; set; }
+
         public GoodReadsDbcontext(DbContextOptions options) : base(options)
         {
         }

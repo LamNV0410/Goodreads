@@ -5,24 +5,18 @@ namespace SMD.Goodreads.Tests.MockData
 {
     public class UserBookMockData
     {
-        public static List<Book> GetUserBooksCompletedReading(int userId)
-        {
-            return BookData().Where(_ => _.UserBooks.Any(x => x.IsCompleted && x.UserId == userId)).ToList();
-        }
-        public static List<Book> BookData()
+        public static List<Book> GetBooksWithcompletedReading()
         {
             return new List<Book>()
             {
                 new Book()
                 {
                    Id = 1,
-                   Name="Coven",
-                   Description= @"
-Emsy has always lived in sunny California, 
-and she'd much rather spend her days surfing with her friends or hanging out with her girlfriend than honing her powers as a fire elemental.
-But when members of her family's coven back east are murdered under mysterious circumstances that can only be the result of powerful witchcraft, 
-her family must suddenly return to dreary upstate New York. There, Emsy will have to master her neglected craft in order to find the killer . . . 
-before her family becomes their next target",
+                   Name="Boneshaker",
+                   Description= @"In the early days of the Civil War, 
+rumors of gold in the frozen Klondike brought hordes of newcomers to the Pacific Northwest. 
+Anxious to compete, Russian prospectors commissioned inventor Leviticus Blue to create a great machine that could mine through Alaska’s ice. 
+Thus was Dr. Blue’s Incredible Bone-Shaking Drill Engine born.",
                    UserBooks = new List<UserBook>()
                    {
                        new UserBook()
@@ -32,28 +26,77 @@ before her family becomes their next target",
                             UserId = 1
                        }
                    }
-        },
+                },
                 new Book()
                 {
                    Id = 2,
-                   Name="My Favorite Thing Is Monsters, Vol. 2",
-                   Description= @"In the conclusion of this two-part graphic novel, 
-set in 1960s Chicago, dark mysteries past and present abound, and 10-year-old Karen tries to solve them.
-\r\n\r\nKaren attends the Yippie-organized Festival of Life in Chicago, and finds herself swept up in a police stomping. 
-Privately, she wrestles with her sexual identity, and she continues to investigate her neighbor’s recent death. 
-She discovers one last cassette tape, which sheds light on Anka’s heroic activities.",
+                   Name="The Anubis Gates",
+                   Description= @"Brendan Doyle, a specialist in the work of the early-nineteenth century poet William Ashbless,
+reluctantly accepts an invitation from a millionaire to act as a guide to time-travelling tourists. 
+But while attending a lecture given by Samuel Taylor Coleridge in 1810,
+he becomes marooned in Regency London, where dark and dangerous forces know about the gates in time.",
                    UserBooks = new List<UserBook>()
                    {
                        new UserBook()
                        {
                             BookId = 2,
-                            IsCompleted = true,
+                            IsCompleted = false,
                             UserId = 1
                        }
                    }
                 }
             };
         }
+
+        public static List<Book> GetBooksWithUncompletedReading()
+        {
+            return new List<Book>()
+            {
+                new Book()
+                {
+                   Id = 1,
+                   Name="One Piece",
+                   Description= @"As a child, Monkey D. Luffy was inspired to become a pirate by listening to the tales of the buccaneer
+""Red-Haired"" Shanks. But Luffy's life changed when he accidentally ate the Gum-Gum 
+Devil Fruit and gained the power to stretch like rubber...
+at the cost of never being able to swim again! Years later, still vowing to become the king of the pirates, 
+Luffy sets out on his adventure...one guy alone in a rowboat, in search of the legendary ""One Piece,"" 
+said to be the greatest treasure in the world...",
+                   UserBooks = new List<UserBook>()
+                   {
+                       new UserBook()
+                       {
+                            BookId = 1,
+                            IsCompleted = false,
+                            UserId = 1
+                       }
+                   }
+                },
+                new Book()
+                {
+                    Id = 2,
+                   Name="Monster",
+                   Description= @"
+A man working a job far removed from his childhood dreams gets wrapped up in an unexpected situation…! 
+Becoming a monster, he aims once again to fulfill his lifelong dream…!",
+                   UserBooks = new List<UserBook>()
+                   {
+                       new UserBook()
+                       {
+                            BookId = 2,
+                            IsCompleted = false,
+                            UserId = 1
+                       }
+                   }
+                }
+            };
+        }
+
+        public static List<Book> GetEmptyBook()
+        {
+            return new List<Book>();
+        }
+        
         public static UserBook GetUserBook()
         {
             return new UserBook()
@@ -63,6 +106,7 @@ She discovers one last cassette tape, which sheds light on Anka’s heroic activ
                 UserId = 2
             };
         }
+        
         public static UserBook NewUserBook()
         {
             return new UserBook()
@@ -72,9 +116,12 @@ She discovers one last cassette tape, which sheds light on Anka’s heroic activ
                 UserId = 3
             };
         }
+        
         public static UserBook GetEmptyUserBook()
         {
             return null;
         }
+    
+    
     }
 }
